@@ -1,0 +1,46 @@
+.ratings i {
+  color: green;
+}
+
+.install span {
+  font-size: 12px;
+}
+
+.col-md-4 {
+  margin-top: 27px;
+}
+
+.btn-glyphicon {
+  padding: 8px;
+  background: #ffffff;
+  margin-right: 4px;
+}
+.icon-btn {
+  padding: 1px 15px 3px 2px;
+  border-radius: 50px;
+}
+
+.ddd {
+  display: inline-block;
+  width: 80%;
+  background: none;
+  border: none;
+  border-bottom: 1px solid transparent;
+  border-radius: 0;
+
+  box-shadow: none;
+  color: inherit;
+  transition: border-bottom-color 0.3s;
+}
+.ddd::placeholder {
+  font-size: small;
+  font-weight: 700;
+  font-family: sans-serif;
+}
+.ddd:focus {
+  border: none;
+  background-color: transparent;
+  resize: none;
+  outline: none;
+  border-bottom: 1px solid #ccc;
+}

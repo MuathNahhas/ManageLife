@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
+    />
+    <link
+      href="http://fonts.googleapis.com/css?family=Oswald:300"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="http://fonts.googleapis.com/css?family=Shadows+Into+Light+Two"
+      rel="stylesheet"
+      type="text/css"
+    />
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <title>Note App</title>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.10.2/css/all.css"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700"
+    />
+    <link rel="stylesheet" href="assets/css/style.css" />
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+  <script>
+    jQuery(function ($) {
+      $(window).on("scroll", function () {
+        if ($(this).scrollTop() >= 200) {
+          $(".navbar").addClass("fixed-top");
+        } else if ($(this).scrollTop() == 0) {
+          $(".navbar").removeClass("fixed-top");
+        }
+      });
+
+      function adjustNav() {
+        var winWidth = $(window).width(),
+          dropdown = $(".dropdown"),
+          dropdownMenu = $(".dropdown-menu");
+
+        if (winWidth >= 768) {
+          dropdown.on("mouseenter", function () {
+            $(this).addClass("show").children(dropdownMenu).addClass("show");
+          });
+
+          dropdown.on("mouseleave", function () {
+            $(this)
+              .removeClass("show")
+              .children(dropdownMenu)
+              .removeClass("show");
+          });
+        } else {
+          dropdown.off("mouseenter mouseleave");
+        }
+      }
+
+      $(window).on("resize", adjustNav);
+
+      adjustNav();
+    });
+    //start login script
+  </script>
+</html>
