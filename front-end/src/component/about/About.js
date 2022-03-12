@@ -25,11 +25,14 @@ function About() {
               When your mind’s swarming with loose ends to tie, writing them
               down helps you reduce your cluttered thoughts, which reduces
               stress. It’s also a great way to set aside your overwhelm so that
-              you can focus on the task at hand
+              you can focus on the task at hand.
             </p>
-            <Link className="buttons button-primarys" to="/Abouts">
-              Read More
-            </Link>
+            <p>
+              For more information about the site ,
+              <Link className="buttons button-primarys" to="/Abouts">
+                Click here
+              </Link>
+            </p>
           </div>
         </div>
       </section>

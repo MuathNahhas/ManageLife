@@ -3,7 +3,7 @@ const connection = require("../../db/db");
 const createNote = (req, res) => {
   const userId = req.token.userId;
   const { title, content } = req.body;
-  if (title === "" || content === "") {
+  if (title === undefined || content === undefined) {
     return res.json({
       success: false,
       message: "Please Enter Data ",

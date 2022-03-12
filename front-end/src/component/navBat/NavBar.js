@@ -1,7 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import "./NavBar.css";
-function NavBar({ token }) {
+import { UserContext } from "../../App";
+function NavBar() {
+  const token = useContext(UserContext);
   const [LogedIn, setLogedIn] = useState(
     <a className="btn btn-light action-button button" href="/login/#login">
       Logout
@@ -51,6 +53,11 @@ function NavBar({ token }) {
       <div>
         <div className="header-blue">
           <nav className="navbar navbar-dark navbar-expand-md navigation-clean-search">
+            <img
+              src="./images/Work-life-Balance.png"
+              style={{ width: "60px", height: "60px", marginLeft: "50px" }}
+              alt=""
+            />
             <div className="container">
               <Link className="navbar-brand" to="#">
                 Manage Life
@@ -82,7 +89,7 @@ function NavBar({ token }) {
                 </ul>
                 <form className="form-inline mr-auto" target="_self">
                   <div className="form-group">
-                    <label>
+                    <label htmlFor="search-field">
                       <svg
                         width="16"
                         height="16"

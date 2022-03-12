@@ -1,13 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import Swal from "sweetalert2";
 import "./Note.css";
+import { UserContext } from "../../App";
 function Note() {
-  const token = localStorage.getItem("token");
-  const [title, setTitle] = useState();
-  const [content, setContent] = useState();
-  const [noteData, setNoteData] = useState();
-
+  const [title, setTitle] = useState("");
+  const [content, setContent] = useState("");
+  const [noteData, setNoteData] = useState("");
+  const [renderWhenUpdated, setRenderWhenUpdated] = useState("");
+  const [renderWhenDelete, setRenderWhenDelete] = useState();
+  const token = useContext(UserContext);
   useEffect(() => {
     axios
       .get("http://localhost:5000/getNote/10", {
@@ -17,7 +19,7 @@ function Note() {
         setNoteData(result.data.result);
       })
       .catch((error) => {});
-  }, [content, title, token]);
+  }, [renderWhenDelete, renderWhenUpdated, content, title, token]);
 
   const addTitle = (e) => {
     setTitle(e.target.value);
@@ -102,11 +104,7 @@ function Note() {
         },
       })
       .then((result) => {
-        let arr = [...noteData];
-        arr.splice(undefined, 1);
-        setNoteData([...arr]);
-        setTitle("");
-        setContent("");
+        setRenderWhenDelete(result);
         const Toast = Swal.mixin({
           toast: true,
           position: "top-end",
@@ -148,8 +146,9 @@ function Note() {
 
     const { value: formValues } = await Swal.fire({
       title: "Multiple inputs",
+
       html:
-        `<input type="text" id="swal-input1" value='${title}' class="swal2-input">` +
+        `<input type="text"  id="swal-input1" value='${title}' class="swal2-input">` +
         `<textarea id="swal-input2"  class="swal2-input">${inputValues} </textarea>`,
       focusConfirm: true,
       showCancelButton: true,
@@ -176,8 +175,7 @@ function Note() {
           }
         )
         .then((result) => {
-          setContent("");
-          setTitle("");
+          setRenderWhenUpdated(result);
           Swal.fire(result.data.message);
         });
     }
